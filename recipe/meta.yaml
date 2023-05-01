@@ -12,13 +12,14 @@ source:
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
 
 requirements:
   host:
     - pip
     - python >=3.5
     - setuptools
+    - wheel
   run:
     - pytest >=3.0
     - python >=3.5
@@ -27,15 +28,21 @@ requirements:
 test:
   imports:
     - pytest_tornasync
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/eukaryote/pytest-tornasync
   license: MIT
   license_family: MIT
   license_file: LICENSE
+  description: A simple pytest plugin that provides some helpful fixtures for testing Tornado (version 5.0 or newer) apps and easy handling of plain (undecoratored) native coroutine tests (Python 3.5+).
   summary: py.test plugin for testing Python 3.5+ Tornado code
   dev_url: https://github.com/eukaryote/pytest-tornasync
-
+  doc_url: https://github.com/eukaryote/pytest-tornasync/blob/master/README.rst
+  
 extra:
   recipe-maintainers:
     - lincrosenbach
