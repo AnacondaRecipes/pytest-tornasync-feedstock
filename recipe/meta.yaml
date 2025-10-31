@@ -2,16 +2,16 @@
 {% set version = "0.6.0.post2" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: d781b6d951a2e7c08843141d3ff583610b4ea86bfa847714c76edefb576bbe5d
 
 build:
-  number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv"
+  number: 1
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
